@@ -56,15 +56,39 @@
 		D885DFB72792D06C002C5600 /* ShortIt */ = {
 			isa = PBXGroup;
 			children = (
-				D885DFB82792D06C002C5600 /* AppDelegate.swift */,
-				D885DFCC2792D14C002C5600 /* MainViewController.swift */,
-				D885DFC12792D06F002C5600 /* Assets.xcassets */,
+				D8ECA54B27943B73001C8223 /* ViewControllers */,
+				D8ECA54A27943B5F001C8223 /* App */,
+				D8ECA54C27943B86001C8223 /* Resources */,
 				D885DFC32792D06F002C5600 /* LaunchScreen.storyboard */,
 				D885DFC62792D06F002C5600 /* Info.plist */,
+			);
+			path = ShortIt;
+			sourceTree = "<group>";
+		};
+		D8ECA54A27943B5F001C8223 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D885DFB82792D06C002C5600 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D8ECA54B27943B73001C8223 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D885DFCC2792D14C002C5600 /* MainViewController.swift */,
 				D885DFCE2792D399002C5600 /* TabBarViewController.swift */,
 				D885DFD02792D66C002C5600 /* HistoryViewController.swift */,
 			);
-			path = ShortIt;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D8ECA54C27943B86001C8223 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D885DFC12792D06F002C5600 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
