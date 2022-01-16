@@ -11,6 +11,8 @@
 		D885DFC22792D06F002C5600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D885DFC12792D06F002C5600 /* Assets.xcassets */; };
 		D885DFC52792D06F002C5600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885DFC32792D06F002C5600 /* LaunchScreen.storyboard */; };
 		D885DFCD2792D14C002C5600 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFCC2792D14C002C5600 /* MainViewController.swift */; };
+		D885DFCF2792D399002C5600 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFCE2792D399002C5600 /* TabBarViewController.swift */; };
+		D885DFD12792D66C002C5600 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFD02792D66C002C5600 /* HistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		D885DFC42792D06F002C5600 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D885DFC62792D06F002C5600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D885DFCC2792D14C002C5600 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D885DFCE2792D399002C5600 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		D885DFD02792D66C002C5600 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				D885DFC12792D06F002C5600 /* Assets.xcassets */,
 				D885DFC32792D06F002C5600 /* LaunchScreen.storyboard */,
 				D885DFC62792D06F002C5600 /* Info.plist */,
+				D885DFCE2792D399002C5600 /* TabBarViewController.swift */,
+				D885DFD02792D66C002C5600 /* HistoryViewController.swift */,
 			);
 			path = ShortIt;
 			sourceTree = "<group>";
@@ -132,7 +138,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D885DFB92792D06C002C5600 /* AppDelegate.swift in Sources */,
+				D885DFCF2792D399002C5600 /* TabBarViewController.swift in Sources */,
 				D885DFCD2792D14C002C5600 /* MainViewController.swift in Sources */,
+				D885DFD12792D66C002C5600 /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
