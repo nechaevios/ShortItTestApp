@@ -13,6 +13,8 @@
 		D885DFCD2792D14C002C5600 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFCC2792D14C002C5600 /* MainViewController.swift */; };
 		D885DFCF2792D399002C5600 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFCE2792D399002C5600 /* TabBarViewController.swift */; };
 		D885DFD12792D66C002C5600 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFD02792D66C002C5600 /* HistoryViewController.swift */; };
+		D8ECA54F2794A44B001C8223 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ECA54E2794A44B001C8223 /* NetworkManager.swift */; };
+		D8ECA5542794A802001C8223 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ECA5532794A802001C8223 /* ResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D885DFCC2792D14C002C5600 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D885DFCE2792D399002C5600 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D885DFD02792D66C002C5600 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		D8ECA54E2794A44B001C8223 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D8ECA5532794A802001C8223 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		D885DFB72792D06C002C5600 /* ShortIt */ = {
 			isa = PBXGroup;
 			children = (
+				D8ECA5502794A620001C8223 /* Models */,
+				D8ECA54D2794A417001C8223 /* Services */,
 				D8ECA54B27943B73001C8223 /* ViewControllers */,
 				D8ECA54A27943B5F001C8223 /* App */,
 				D8ECA54C27943B86001C8223 /* Resources */,
@@ -89,6 +95,22 @@
 				D885DFC12792D06F002C5600 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D8ECA54D2794A417001C8223 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D8ECA54E2794A44B001C8223 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D8ECA5502794A620001C8223 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D8ECA5532794A802001C8223 /* ResponseModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +185,9 @@
 			files = (
 				D885DFB92792D06C002C5600 /* AppDelegate.swift in Sources */,
 				D885DFCF2792D399002C5600 /* TabBarViewController.swift in Sources */,
+				D8ECA54F2794A44B001C8223 /* NetworkManager.swift in Sources */,
 				D885DFCD2792D14C002C5600 /* MainViewController.swift in Sources */,
+				D8ECA5542794A802001C8223 /* ResponseModel.swift in Sources */,
 				D885DFD12792D66C002C5600 /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

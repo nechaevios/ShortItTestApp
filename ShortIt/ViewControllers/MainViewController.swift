@@ -75,12 +75,21 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func fetchShortUrl() {
+        resultLabel.text = ""
         let urlString = textField.text ?? ""
         
         if !urlString.isEmpty {
+            NetworkManager.shared.fetchShortUrl(longUrl: urlString) { [weak self ] responseModel, error in
+                if error == nil {
+                    guard let responseModel = responseModel else { return }
+                    self?.resultLabel.text = responseModel.shorturl
+                } else {
+                    print(error!.localizedDescription)
+                }
+            }
             resultLabel.isUserInteractionEnabled = true
             resultLabel.isHidden = false
-            resultLabel.text = textField.text
+//            resultLabel.text = textField.text
         } else {
             resultLabel.isUserInteractionEnabled = false
             resultLabel.isHidden = false
