@@ -13,13 +13,13 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchShortUrl(longUrl: String, completion: @escaping (ResponseModel?, Error?) -> Void) {
+    func fetchShortUrl(longUrl: String, completion: @escaping (Response?, Error?) -> Void) {
         fetchData(urlString: longUrl) { result in
             switch result {
                 
             case .success(let data):
                 do {
-                let response = try JSONDecoder().decode(ResponseModel.self, from: data)
+                let response = try JSONDecoder().decode(Response.self, from: data)
                 completion(response, nil)
                 } catch let jsonError {
                     print(jsonError)

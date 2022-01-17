@@ -83,6 +83,7 @@ final class MainViewController: UIViewController {
                 if error == nil {
                     guard let responseModel = responseModel else { return }
                     self?.resultLabel.text = responseModel.shorturl
+                    StorageManager.shared.saveResponse(response: responseModel)
                 } else {
                     print(error!.localizedDescription)
                 }
