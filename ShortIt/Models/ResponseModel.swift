@@ -11,5 +11,15 @@ struct ResponseModel: Decodable {
     let longurl: String
     let shorturl: String
     
-    static let model = ResponseModel(longurl: "123", shorturl: "234")
+    static func getResponses() -> [ResponseModel] {
+        var responses: [ResponseModel] = []
+        
+        for responseIndex in 0..<10 {
+            let response = ResponseModel(longurl: "https://longurl\(responseIndex).com", shorturl: "http://shorturl\(responseIndex).com")
+            
+            responses.append(response)
+        }
+        
+        return responses
+    }
 }

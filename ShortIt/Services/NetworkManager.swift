@@ -11,8 +11,6 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    private let apiUrl = "http://tiny-url.info/api/v1/random?format=json&url="
-    
     private init() {}
     
     func fetchShortUrl(longUrl: String, completion: @escaping (ResponseModel?, Error?) -> Void) {
@@ -34,6 +32,9 @@ class NetworkManager {
     }
     
     private func fetchData(urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        let apiUrl = "http://tiny-url.info/api/v1/random?format=json&url="
+        
         guard let url = URL(string: apiUrl+urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
