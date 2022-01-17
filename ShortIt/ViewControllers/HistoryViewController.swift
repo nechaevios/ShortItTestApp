@@ -16,18 +16,22 @@ class HistoryViewController: UIViewController {
         return tableView
     }()
     
-    private var responses: [ResponseModel]!
+    private var responses: [Response] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        responses = ResponseModel.getResponses()
         
         setupViews()
         setupDelegate()
         
         setupUI()
         setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        responses = StorageManager.shared.fetchUrlList()
+        tableView.reloadData()
     }
     
     private func setupViews() {
@@ -52,7 +56,7 @@ class HistoryViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
     
@@ -82,6 +86,7 @@ extension HistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            StorageManager.shared.deleteResponse(at: indexPath.row)
             responses.remove(at: indexPath.row)
             tableView.reloadData()
         }
