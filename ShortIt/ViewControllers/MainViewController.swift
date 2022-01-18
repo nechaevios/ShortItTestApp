@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import WebKit
 
 final class MainViewController: UIViewController {
     
@@ -63,7 +62,6 @@ final class MainViewController: UIViewController {
     }()
     
     private lazy var upperStack = UIStackView()
-    private lazy var webView = WKWebView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +70,6 @@ final class MainViewController: UIViewController {
         setupConstraints()
         setupDelegates()
         resultLabelTapGestureSetup()
-
     }
     
     private func checkValid(_ string: String) ->  Bool {
@@ -107,8 +104,7 @@ final class MainViewController: UIViewController {
                     self?.resultLabel.isUserInteractionEnabled = true
                 } else {
                     self?.resultLabel.isUserInteractionEnabled = false
-                    self?.resultLabel.text = "Error. Try Again."
-                    print(error!.localizedDescription)
+                    self?.resultLabel.text = "Error: \(error!.localizedDescription)"
                 }
             }
         }
@@ -196,12 +192,8 @@ extension MainViewController {
     }
     
     @objc private func openWebView() {
-        print("opened")
-        let urlString = resultLabel.text ?? ""
-        if let url = URL(string: urlString) {
-            view = webView
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
+        let webVC = WebViewController()
+        webVC.urlString = resultLabel.text ?? ""
+        navigationController?.pushViewController(webVC, animated: true)
     }
 }

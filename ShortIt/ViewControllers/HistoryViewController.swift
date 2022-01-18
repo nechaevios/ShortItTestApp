@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class HistoryViewController: UIViewController {
     
@@ -39,7 +40,7 @@ class HistoryViewController: UIViewController {
     }
     
     private func setupDelegate() {
-//        tableView.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
     }
     
@@ -59,7 +60,6 @@ class HistoryViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
-    
 }
 
 //MARK: - UITableViewDataSource
@@ -92,15 +92,17 @@ extension HistoryViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let browser = SFSafariViewController()
-    }
-    
-    
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate SFSafariViewControllerDelegate
 
-//extension HistoryViewController: UITableViewDelegate {
-//
-//}
+extension HistoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let urlString = responses[indexPath.row].shorturl
+        
+        if let url = URL(string: urlString) {
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true)
+        }
+    }
+}
