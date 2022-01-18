@@ -21,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D85520EB27973F54001470AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D855A54827971B97002F4F36 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		D855A54A27973639002F4F36 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D885DFB52792D06C002C5600 /* ShortIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +83,7 @@
 				D8ECA54C27943B86001C8223 /* Resources */,
 				D885DFC32792D06F002C5600 /* LaunchScreen.storyboard */,
 				D885DFC62792D06F002C5600 /* Info.plist */,
+				D85520EB27973F54001470AF /* README.md */,
 			);
 			path = ShortIt;
 			sourceTree = "<group>";
