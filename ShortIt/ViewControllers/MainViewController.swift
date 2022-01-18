@@ -10,6 +10,8 @@ import WebKit
 
 final class MainViewController: UIViewController {
     
+    private let textFieldValidationType: String.ValidationType = .url
+    
     private lazy var upperView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +36,6 @@ final class MainViewController: UIViewController {
         textField.keyboardType = .URL
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
-        
         return textField
     }()
     
@@ -42,7 +43,7 @@ final class MainViewController: UIViewController {
         let resultLabel = UILabel()
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
         resultLabel.textColor = .white
-        resultLabel.isHidden = true
+        resultLabel.numberOfLines = 0
         return resultLabel
     }()
     
@@ -74,33 +75,49 @@ final class MainViewController: UIViewController {
 
     }
     
+    private func checkValid(_ string: String) ->  Bool {
+        switch textFieldValidationType {
+        case .url:
+            if string.isValid(textFieldValidationType) {
+                return true
+            } else {
+                resultLabel.text = "Url is not valid! Format: http(s)://url.com"
+                return false
+            }
+        }
+    }
+    
     @objc private func fetchShortUrl() {
-        resultLabel.text = ""
-        let urlString = textField.text ?? ""
+        guard let urlString = textField.text else { return }
         
-        if !urlString.isEmpty {
+        if urlString.isEmpty {
+            resultLabel.isUserInteractionEnabled = false
+            resultLabel.text = "Empty URL"
+            return
+        }
+        
+        if checkValid(urlString) {
+            resultLabel.text = "..."
+            
             NetworkManager.shared.fetchShortUrl(longUrl: urlString) { [weak self ] responseModel, error in
                 if error == nil {
                     guard let responseModel = responseModel else { return }
-                    self?.resultLabel.text = responseModel.shorturl
                     StorageManager.shared.saveResponse(response: responseModel)
+                    self?.resultLabel.text = responseModel.shorturl
+                    self?.resultLabel.isUserInteractionEnabled = true
                 } else {
+                    self?.resultLabel.isUserInteractionEnabled = false
+                    self?.resultLabel.text = "Error. Try Again."
                     print(error!.localizedDescription)
                 }
             }
-            resultLabel.isUserInteractionEnabled = true
-            resultLabel.isHidden = false
-//            resultLabel.text = textField.text
-        } else {
-            resultLabel.isUserInteractionEnabled = false
-            resultLabel.isHidden = false
-            resultLabel.text = "Empty URL"
         }
     }
     
     private func setupUI() {
         view.backgroundColor = .white
         navigationItem.title = "Short It"
+        resultLabel.text = " "
         
         setupUpperStackView()
         view.addSubview(upperStack)
@@ -141,15 +158,9 @@ final class MainViewController: UIViewController {
     
     private func setupUpperStackViewConstraints() {
         upperStack.translatesAutoresizingMaskIntoConstraints = false
-        upperStack.leadingAnchor
-            .constraint(equalTo: view.leadingAnchor, constant: 16)
-            .isActive = true
-        upperStack.trailingAnchor
-            .constraint(equalTo: view.trailingAnchor, constant: -16)
-            .isActive = true
-        upperStack.topAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16)
-            .isActive = true
+        upperStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        upperStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        upperStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
     }
     
     private func setupComposeButtonConstraints() {

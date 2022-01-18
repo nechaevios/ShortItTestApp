@@ -92,6 +92,10 @@ extension HistoryViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let browser = SFSafariViewController()
+    }
+    
     
 }
 
