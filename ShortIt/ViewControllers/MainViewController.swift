@@ -78,7 +78,8 @@ final class MainViewController: UIViewController {
             if string.isValid(textFieldValidationType) {
                 return true
             } else {
-                resultLabel.text = "Url is not valid! Format: http(s)://url.com"
+                let text = "Url is not valid! Format: http(s)://url.com"
+                setResultTextAndUserInteraction(with: text)
                 return false
             }
         }
@@ -88,23 +89,20 @@ final class MainViewController: UIViewController {
         guard let urlString = textField.text else { return }
         
         if urlString.isEmpty {
-            resultLabel.isUserInteractionEnabled = false
-            resultLabel.text = "Empty URL"
+            setResultTextAndUserInteraction(with: "Empty URL")
             return
         }
         
         if checkValid(urlString) {
-            resultLabel.text = "..."
+            setResultTextAndUserInteraction(with: "...")
             
             NetworkManager.shared.fetchShortUrl(longUrl: urlString) { [weak self ] responseModel, error in
                 if error == nil {
                     guard let responseModel = responseModel else { return }
                     StorageManager.shared.saveResponse(response: responseModel)
-                    self?.resultLabel.text = responseModel.shorturl
-                    self?.resultLabel.isUserInteractionEnabled = true
+                    self?.setResultTextAndUserInteraction(with: responseModel.shorturl, and: true)
                 } else {
-                    self?.resultLabel.isUserInteractionEnabled = false
-                    self?.resultLabel.text = "Error: \(error!.localizedDescription)"
+                    self?.setResultTextAndUserInteraction(with: "Error: \(error!.localizedDescription)")
                 }
             }
         }
@@ -113,7 +111,7 @@ final class MainViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
         navigationItem.title = "Short It"
-        resultLabel.text = " "
+        setResultTextAndUserInteraction()
         
         setupUpperStackView()
         view.addSubview(upperStack)
@@ -142,6 +140,11 @@ final class MainViewController: UIViewController {
             bottom: 20,
             trailing: 10
         )
+    }
+    
+    private func setResultTextAndUserInteraction(with text: String = " ", and status: Bool = false) {
+        resultLabel.text = text
+        resultLabel.isUserInteractionEnabled = status
     }
     
     //MARK: - Constraints
