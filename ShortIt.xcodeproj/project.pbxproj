@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D85520F027976BDC001470AF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85520EF27976BDC001470AF /* MainViewModel.swift */; };
 		D855A54927971B97002F4F36 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855A54827971B97002F4F36 /* String + Extension.swift */; };
 		D855A54B27973639002F4F36 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855A54A27973639002F4F36 /* WebViewController.swift */; };
 		D885DFB92792D06C002C5600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFB82792D06C002C5600 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		D85520EB27973F54001470AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D85520EF27976BDC001470AF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D855A54827971B97002F4F36 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		D855A54A27973639002F4F36 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D885DFB52792D06C002C5600 /* ShortIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D85520EC27976B55001470AF /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				D885DFCC2792D14C002C5600 /* MainViewController.swift */,
+				D85520EF27976BDC001470AF /* MainViewModel.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		D855A5452796CF99002F4F36 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +86,7 @@
 		D885DFB72792D06C002C5600 /* ShortIt */ = {
 			isa = PBXGroup;
 			children = (
+				D85520EC27976B55001470AF /* MainView */,
 				D855A5452796CF99002F4F36 /* Extensions */,
 				D8ECA5502794A620001C8223 /* Models */,
 				D8ECA54D2794A417001C8223 /* Services */,
@@ -99,7 +111,6 @@
 		D8ECA54B27943B73001C8223 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D885DFCC2792D14C002C5600 /* MainViewController.swift */,
 				D885DFCE2792D399002C5600 /* TabBarViewController.swift */,
 				D885DFD02792D66C002C5600 /* HistoryViewController.swift */,
 				D855A54A27973639002F4F36 /* WebViewController.swift */,
@@ -207,6 +218,7 @@
 				D885DFCF2792D399002C5600 /* TabBarViewController.swift in Sources */,
 				D855A54927971B97002F4F36 /* String + Extension.swift in Sources */,
 				D8ECA54F2794A44B001C8223 /* NetworkManager.swift in Sources */,
+				D85520F027976BDC001470AF /* MainViewModel.swift in Sources */,
 				D8E8BDE72795A2CC004D76C3 /* StorageManager.swift in Sources */,
 				D885DFCD2792D14C002C5600 /* MainViewController.swift in Sources */,
 				D8ECA5542794A802001C8223 /* Response.swift in Sources */,

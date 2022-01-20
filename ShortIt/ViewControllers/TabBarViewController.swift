@@ -33,8 +33,16 @@ class TabBarViewController: UITabBarController {
     
     private func setupVCs() {
         viewControllers = [
-            createNavController(for: MainViewController(), title: "Shorten now", image: UIImage(named: "lasso.and.sparkles")!),
-            createNavController(for: HistoryViewController(), title: "History", image: UIImage(named: "list.bullet")!)
+            createNavController(
+                for: MainViewController(),
+                   title: "Shorten now",
+                   image: UIImage(named: "lasso.and.sparkles")!
+            ),
+            createNavController(
+                for: HistoryViewController(),
+                   title: "History",
+                   image: UIImage(named: "list.bullet")!
+            )
         ]
     }
     

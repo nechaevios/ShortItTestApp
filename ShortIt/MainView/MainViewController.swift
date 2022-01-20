@@ -9,7 +9,15 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    private let textFieldValidationType: String.ValidationType = .url
+    var viewModel: MainViewModelProtocol! {
+        didSet {
+            self.viewModel.viewModelDidChange = {
+               [unowned self] viewModel in
+                self.resultLabel.text = self.viewModel.resultLabelText
+                self.resultLabel.isUserInteractionEnabled = self.viewModel.resultLabelState
+            }
+        }
+    }
     
     private lazy var upperView: UIView = {
         let view = UIView()
@@ -21,7 +29,7 @@ final class MainViewController: UIViewController {
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Enter URL:"
+        label.text = viewModel.textLabelData
         label.textColor = .white
         return label
     }()
@@ -30,7 +38,7 @@ final class MainViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
-        textField.placeholder = "https://example.com"
+        textField.placeholder = viewModel.textFieldPlaceholder
         textField.returnKeyType = .done
         textField.keyboardType = .URL
         textField.autocorrectionType = .no
@@ -56,7 +64,7 @@ final class MainViewController: UIViewController {
             alpha: 1)
         button.tintColor = .white
         button.layer.cornerRadius = 14
-        button.setTitle("Short it!", for: .normal)
+        button.setTitle(viewModel.buttonTitle, for: .normal)
         button.addTarget(self, action: #selector(fetchShortUrl), for: .touchUpInside)
         return button
     }()
@@ -65,6 +73,7 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = MainViewModel()
         
         setupUI()
         setupConstraints()
@@ -72,48 +81,15 @@ final class MainViewController: UIViewController {
         resultLabelTapGestureSetup()
     }
     
-    private func checkValid(_ string: String) ->  Bool {
-        switch textFieldValidationType {
-        case .url:
-            if string.isValid(textFieldValidationType) {
-                return true
-            } else {
-                resultLabel.text = "Url is not valid! Format: http(s)://url.com"
-                return false
-            }
-        }
-    }
     
     @objc private func fetchShortUrl() {
-        guard let urlString = textField.text else { return }
-        
-        if urlString.isEmpty {
-            resultLabel.isUserInteractionEnabled = false
-            resultLabel.text = "Empty URL"
-            return
-        }
-        
-        if checkValid(urlString) {
-            resultLabel.text = "..."
-            
-            NetworkManager.shared.fetchShortUrl(longUrl: urlString) { [weak self ] responseModel, error in
-                if error == nil {
-                    guard let responseModel = responseModel else { return }
-                    StorageManager.shared.saveResponse(response: responseModel)
-                    self?.resultLabel.text = responseModel.shorturl
-                    self?.resultLabel.isUserInteractionEnabled = true
-                } else {
-                    self?.resultLabel.isUserInteractionEnabled = false
-                    self?.resultLabel.text = "Error: \(error!.localizedDescription)"
-                }
-            }
-        }
+        viewModel.fetchShortUrl(urlString: textField.text)
     }
     
     private func setupUI() {
         view.backgroundColor = .white
-        navigationItem.title = "Short It"
-        resultLabel.text = " "
+        navigationItem.title = viewModel.navigationItemText
+        resultLabel.text = viewModel.resultLabelText
         
         setupUpperStackView()
         view.addSubview(upperStack)
@@ -193,7 +169,7 @@ extension MainViewController {
     
     @objc private func openWebView() {
         let webVC = WebViewController()
-        webVC.urlString = resultLabel.text ?? ""
+        webVC.urlString = viewModel.resultLabelText
         navigationController?.pushViewController(webVC, animated: true)
     }
 }
