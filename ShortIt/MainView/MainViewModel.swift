@@ -61,21 +61,20 @@ final class MainViewModel: MainViewModelProtocol {
         guard let urlString = urlString else { return }
         
         if urlString.isEmpty {
-            setTextAndUserInteraction(with: "Empty URL", and: nil)
+            setResultTextAndUserInteractionMode(as: "Empty URL")
             return
         }
         
         if checkValid(urlString) {
-            resultText = "..."
-            setTextAndUserInteraction(with: "...", and: nil)
+            setResultTextAndUserInteractionMode(as: "...")
             
             NetworkManager.shared.fetchShortUrl(longUrl: urlString) { [ weak self ] responseModel, error in
                 if error == nil {
                     guard let responseModel = responseModel else { return }
                     StorageManager.shared.saveResponse(response: responseModel)
-                    self?.setTextAndUserInteraction(with: responseModel.shorturl, and: true)
+                    self?.setResultTextAndUserInteractionMode(as: responseModel.shorturl, and: true)
                 } else {
-                    self?.setTextAndUserInteraction(with: nil, and: nil)
+                    self?.setResultTextAndUserInteractionMode()
                 }
             }
         }
@@ -87,15 +86,15 @@ final class MainViewModel: MainViewModelProtocol {
             if string.isValid(textFieldValidationType) {
                 return true
             } else {
-                setTextAndUserInteraction(with: "Url is not valid! Format: http(s)://url.com", and: nil)
+                setResultTextAndUserInteractionMode(as: "Url is not valid! Format: http(s)://url.com")
                 return false
             }
         }
     }
     
-    private func setTextAndUserInteraction(with text: String?, and status: Bool?) {
-        resultText = text ?? " "
-        userInteractionStatus = status ?? false
+    private func setResultTextAndUserInteractionMode(as text: String = " ", and status: Bool = false) {
+        resultText = text
+        userInteractionStatus = status
         viewModelDidChange?(self)
     }
 }
