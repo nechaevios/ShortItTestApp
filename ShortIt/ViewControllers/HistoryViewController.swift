@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-class HistoryViewController: UIViewController {
+final class HistoryViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
