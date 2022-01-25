@@ -10,12 +10,11 @@ import WebKit
 
 final class WebViewController: UIViewController, WKUIDelegate {
     
-    var urlString: String!
+    var viewModel: WebViewModelProtocol!
     
-    lazy var webView: WKWebView = {
+    let webView: WKWebView = {
         let webConfiguration = WKWebViewConfiguration()
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
@@ -25,10 +24,12 @@ final class WebViewController: UIViewController, WKUIDelegate {
         
         setupUI()
         setupWebViewConstraints()
-        
-        let myURL = URL(string: urlString)
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
+        loadUrl()
+    }
+    
+    private func loadUrl() {
+        guard let request = viewModel.urlRequest else { return }
+        webView.load(request)
     }
     
     private func setupUI() {

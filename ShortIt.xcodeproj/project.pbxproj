@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80AD2A0279B357400A65073 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80AD29F279B357400A65073 /* HistoryViewModel.swift */; };
+		D80AD2A3279B4FB000A65073 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80AD2A2279B4FB000A65073 /* WebViewModel.swift */; };
 		D85520F027976BDC001470AF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85520EF27976BDC001470AF /* MainViewModel.swift */; };
 		D855A54927971B97002F4F36 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855A54827971B97002F4F36 /* String + Extension.swift */; };
 		D855A54B27973639002F4F36 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855A54A27973639002F4F36 /* WebViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D80AD29F279B357400A65073 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		D80AD2A2279B4FB000A65073 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		D85520EB27973F54001470AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D85520EF27976BDC001470AF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D855A54827971B97002F4F36 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
@@ -52,6 +56,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D80AD29E279B355E00A65073 /* HistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				D885DFD02792D66C002C5600 /* HistoryViewController.swift */,
+				D80AD29F279B357400A65073 /* HistoryViewModel.swift */,
+			);
+			path = HistoryView;
+			sourceTree = "<group>";
+		};
+		D80AD2A1279B4F9400A65073 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				D855A54A27973639002F4F36 /* WebViewController.swift */,
+				D80AD2A2279B4FB000A65073 /* WebViewModel.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		D85520EC27976B55001470AF /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +110,8 @@
 		D885DFB72792D06C002C5600 /* ShortIt */ = {
 			isa = PBXGroup;
 			children = (
+				D80AD2A1279B4F9400A65073 /* WebView */,
+				D80AD29E279B355E00A65073 /* HistoryView */,
 				D8D2B3F8279AE0720051C7EE /* TabBarView */,
 				D85520EC27976B55001470AF /* MainView */,
 				D855A5452796CF99002F4F36 /* Extensions */,
@@ -123,8 +147,6 @@
 		D8ECA54B27943B73001C8223 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D885DFD02792D66C002C5600 /* HistoryViewController.swift */,
-				D855A54A27973639002F4F36 /* WebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -224,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D80AD2A3279B4FB000A65073 /* WebViewModel.swift in Sources */,
 				D885DFB92792D06C002C5600 /* AppDelegate.swift in Sources */,
 				D855A54B27973639002F4F36 /* WebViewController.swift in Sources */,
 				D885DFCF2792D399002C5600 /* TabBarViewController.swift in Sources */,
@@ -231,6 +254,7 @@
 				D8ECA54F2794A44B001C8223 /* NetworkManager.swift in Sources */,
 				D85520F027976BDC001470AF /* MainViewModel.swift in Sources */,
 				D8E8BDE72795A2CC004D76C3 /* StorageManager.swift in Sources */,
+				D80AD2A0279B357400A65073 /* HistoryViewModel.swift in Sources */,
 				D885DFCD2792D14C002C5600 /* MainViewController.swift in Sources */,
 				D8ECA5542794A802001C8223 /* Response.swift in Sources */,
 				D8D2B3FA279AE0880051C7EE /* TabBarViewModel.swift in Sources */,
@@ -303,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
