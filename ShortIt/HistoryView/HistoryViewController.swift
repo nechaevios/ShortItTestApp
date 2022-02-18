@@ -27,7 +27,7 @@ final class HistoryViewController: UIViewController, ChildrenViewCompletionProto
         return tableView
     }()
     
-    private var responses: [Response] = []
+    private var responses: [BitLyResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,11 +89,11 @@ extension HistoryViewController: UITableViewDataSource {
         let response = responses[indexPath.row]
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
-            content.text = response.longurl
-            content.secondaryText = response.shorturl
+            content.text = response.long_url
+            content.secondaryText = response.link
             cell.contentConfiguration = content
         } else {
-            cell.textLabel!.text = response.shorturl
+            cell.textLabel!.text = response.link
         }
         
         return cell
@@ -113,7 +113,7 @@ extension HistoryViewController: UITableViewDataSource {
 
 extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlString = responses[indexPath.row].shorturl
+        let urlString = responses[indexPath.row].link
         
         if let url = URL(string: urlString) {
             let safariVC = SFSafariViewController(url: url)

@@ -34,7 +34,7 @@ final class MainViewModel: MainViewModelProtocol {
     
     private var resultText: String = ResultText.none.rawValue
     private var userInteractionStatus = false
-    private var apiResponse: Response?
+    private var apiResponse: BitLyResponse?
     
     private let textFieldValidationType: String.ValidationType = .url
     
@@ -63,7 +63,7 @@ final class MainViewModel: MainViewModelProtocol {
                     guard let responseModel = responseModel else { return }
                     StorageManager.shared.saveResponse(response: responseModel)
                     self?.apiResponse = responseModel
-                    self?.setResultTextAndUserInteractionMode(as: responseModel.shorturl, and: true)
+                    self?.setResultTextAndUserInteractionMode(as: responseModel.link, and: true)
                 } else {
                     self?.setResultTextAndUserInteractionMode()
                 }

@@ -9,21 +9,21 @@ import Foundation
 
 protocol WebViewModelProtocol {
     var urlRequest: URLRequest? { get }
-    init(response: Response)
+    init(response: BitLyResponse)
 }
 
 class WebViewModel: WebViewModelProtocol {
     
     var urlRequest: URLRequest? {
         get {
-            guard let myURL = URL(string: response.shorturl) else { return nil }
+            guard let myURL = URL(string: response.link) else { return nil }
             return URLRequest(url: myURL)
         }
     }
     
-    private var response: Response
+    private var response: BitLyResponse
     
-    required init(response: Response) {
+    required init(response: BitLyResponse) {
         self.response = response
     }
 }
