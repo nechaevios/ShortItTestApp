@@ -98,6 +98,7 @@
 		D885DFAC2792D06C002C5600 = {
 			isa = PBXGroup;
 			children = (
+				D85520EB27973F54001470AF /* README.md */,
 				D885DFB72792D06C002C5600 /* ShortIt */,
 				D885DFB62792D06C002C5600 /* Products */,
 			);
@@ -125,7 +126,6 @@
 				D8ECA54C27943B86001C8223 /* Resources */,
 				D885DFC32792D06F002C5600 /* LaunchScreen.storyboard */,
 				D885DFC62792D06F002C5600 /* Info.plist */,
-				D85520EB27973F54001470AF /* README.md */,
 			);
 			path = ShortIt;
 			sourceTree = "<group>";
