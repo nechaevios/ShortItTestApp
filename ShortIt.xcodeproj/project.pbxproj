@@ -12,6 +12,7 @@
 		D85520F027976BDC001470AF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85520EF27976BDC001470AF /* MainViewModel.swift */; };
 		D855A54927971B97002F4F36 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855A54827971B97002F4F36 /* String + Extension.swift */; };
 		D855A54B27973639002F4F36 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D855A54A27973639002F4F36 /* WebViewController.swift */; };
+		D856E84727BFD58B00441173 /* BitLyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D856E84627BFD58B00441173 /* BitLyResponse.swift */; };
 		D885DFB92792D06C002C5600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFB82792D06C002C5600 /* AppDelegate.swift */; };
 		D885DFC22792D06F002C5600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D885DFC12792D06F002C5600 /* Assets.xcassets */; };
 		D885DFC52792D06F002C5600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885DFC32792D06F002C5600 /* LaunchScreen.storyboard */; };
@@ -33,6 +34,7 @@
 		D85520EF27976BDC001470AF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D855A54827971B97002F4F36 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		D855A54A27973639002F4F36 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		D856E84627BFD58B00441173 /* BitLyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitLyResponse.swift; sourceTree = "<group>"; };
 		D885DFB52792D06C002C5600 /* ShortIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D885DFB82792D06C002C5600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D885DFC12792D06F002C5600 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D8ECA5532794A802001C8223 /* Response.swift */,
+				D856E84627BFD58B00441173 /* BitLyResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D80AD2A3279B4FB000A65073 /* WebViewModel.swift in Sources */,
+				D856E84727BFD58B00441173 /* BitLyResponse.swift in Sources */,
 				D885DFB92792D06C002C5600 /* AppDelegate.swift in Sources */,
 				D855A54B27973639002F4F36 /* WebViewController.swift in Sources */,
 				D8DDD12A27A877C00034EC36 /* HistoryTabCoordinator.swift in Sources */,
