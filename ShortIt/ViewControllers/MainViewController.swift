@@ -100,7 +100,7 @@ final class MainViewController: UIViewController {
                 if error == nil {
                     guard let responseModel = responseModel else { return }
                     StorageManager.shared.saveResponse(response: responseModel)
-                    self?.setResultTextAndUserInteraction(with: responseModel.shorturl, and: true)
+                    self?.setResultTextAndUserInteraction(with: responseModel.link, and: true)
                 } else {
                     self?.setResultTextAndUserInteraction(with: "Error: \(error!.localizedDescription)")
                 }
