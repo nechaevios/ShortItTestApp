@@ -8,7 +8,17 @@
 import UIKit
 import SafariServices
 
-final class HistoryViewController: UIViewController {
+final class HistoryViewController: UIViewController, ChildrenViewCompletionProtocol {
+    
+    deinit {
+        print("History deinit")
+    }
+    
+    var viewModel: HistoryViewModel! {
+        didSet {
+            print("inited")
+        }
+    }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -33,6 +43,11 @@ final class HistoryViewController: UIViewController {
         super.viewWillAppear(animated)
         responses = StorageManager.shared.fetchUrlList()
         tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        completion?("History View Dissappear22")
     }
     
     private func setupViews() {

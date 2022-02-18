@@ -17,6 +17,7 @@
 		D885DFC52792D06F002C5600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885DFC32792D06F002C5600 /* LaunchScreen.storyboard */; };
 		D885DFCD2792D14C002C5600 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFCC2792D14C002C5600 /* MainViewController.swift */; };
 		D885DFD12792D66C002C5600 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885DFD02792D66C002C5600 /* HistoryViewController.swift */; };
+		D895D96A27AAC2D100BFBDD5 /* TabCoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D895D96927AAC2D100BFBDD5 /* TabCoordinatorProtocols.swift */; };
 		D8C0749927A803E900417112 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C0749827A803E900417112 /* AppCoordinator.swift */; };
 		D8DDD12827A877AD0034EC36 /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DDD12727A877AD0034EC36 /* MainTabCoordinator.swift */; };
 		D8DDD12A27A877C00034EC36 /* HistoryTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DDD12927A877C00034EC36 /* HistoryTabCoordinator.swift */; };
@@ -39,6 +40,7 @@
 		D885DFC62792D06F002C5600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D885DFCC2792D14C002C5600 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D885DFD02792D66C002C5600 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		D895D96927AAC2D100BFBDD5 /* TabCoordinatorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinatorProtocols.swift; sourceTree = "<group>"; };
 		D8C0749827A803E900417112 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D8DDD12727A877AD0034EC36 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
 		D8DDD12927A877C00034EC36 /* HistoryTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTabCoordinator.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				D8DDD12927A877C00034EC36 /* HistoryTabCoordinator.swift */,
 				D8DDD12727A877AD0034EC36 /* MainTabCoordinator.swift */,
+				D895D96927AAC2D100BFBDD5 /* TabCoordinatorProtocols.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				D885DFB92792D06C002C5600 /* AppDelegate.swift in Sources */,
 				D855A54B27973639002F4F36 /* WebViewController.swift in Sources */,
 				D8DDD12A27A877C00034EC36 /* HistoryTabCoordinator.swift in Sources */,
+				D895D96A27AAC2D100BFBDD5 /* TabCoordinatorProtocols.swift in Sources */,
 				D855A54927971B97002F4F36 /* String + Extension.swift in Sources */,
 				D8ECA54F2794A44B001C8223 /* NetworkManager.swift in Sources */,
 				D85520F027976BDC001470AF /* MainViewModel.swift in Sources */,

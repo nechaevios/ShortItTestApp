@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+final class MainViewController: UIViewController, ChildrenViewCompletionProtocol {
     
     var viewModel: MainViewModelProtocol! {
         didSet {
@@ -17,6 +17,12 @@ final class MainViewController: UIViewController {
                 self.resultLabel.isUserInteractionEnabled = self.viewModel.resultLabelState
             }
         }
+    }
+        
+    private enum LabelsText: String {
+        case textFieldPlaceholder = "https://example.com"
+        case buttonTitle = "Short It!"
+        case textLabelData = "Enter URL:"
     }
     
     private lazy var upperView: UIView = {
@@ -29,7 +35,7 @@ final class MainViewController: UIViewController {
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = viewModel.textLabelData
+        label.text = LabelsText.textLabelData.rawValue
         label.textColor = .white
         return label
     }()
@@ -38,7 +44,7 @@ final class MainViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
-        textField.placeholder = viewModel.textFieldPlaceholder
+        textField.placeholder = LabelsText.textFieldPlaceholder.rawValue
         textField.returnKeyType = .done
         textField.keyboardType = .URL
         textField.autocorrectionType = .no
@@ -64,7 +70,7 @@ final class MainViewController: UIViewController {
             alpha: 1)
         button.tintColor = .white
         button.layer.cornerRadius = 14
-        button.setTitle(viewModel.buttonTitle, for: .normal)
+        button.setTitle(LabelsText.buttonTitle.rawValue, for: .normal)
         button.addTarget(self, action: #selector(fetchShortUrl), for: .touchUpInside)
         return button
     }()
@@ -73,14 +79,18 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = MainViewModel()
         
         setupUI()
         setupConstraints()
         setupDelegates()
         resultLabelTapGestureSetup()
+        
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        completion?("Main View Dissappear11")
+    }
     
     @objc private func fetchShortUrl() {
         viewModel.fetchShortUrl(urlString: textField.text)
@@ -88,7 +98,6 @@ final class MainViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        navigationItem.title = viewModel.navigationItemText
         resultLabel.text = viewModel.resultLabelText
         
         setupUpperStackView()
@@ -168,8 +177,7 @@ extension MainViewController {
     }
     
     @objc private func openWebView() {
-        let webVC = WebViewController()
-        webVC.urlString = viewModel.resultLabelText
-        navigationController?.pushViewController(webVC, animated: true)
+        guard let navVC = navigationController else { return }
+        viewModel.openWebView(navController: navVC)
     }
 }

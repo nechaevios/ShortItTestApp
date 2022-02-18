@@ -5,17 +5,15 @@
 //  Created by Nechaev Sergey  on 19.01.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol MainViewModelProtocol {
     var viewModelDidChange: ((MainViewModelProtocol) -> ())? { get set }
-    var textLabelData: String { get }
-    var textFieldPlaceholder: String { get }
-    var navigationItemText: String { get }
     var resultLabelText: String { get }
     var resultLabelState: Bool { get }
-    var buttonTitle: String { get }
+    
     func fetchShortUrl(urlString: String?)
+    func openWebView(navController: NSObject)
 }
 
 final class MainViewModel: MainViewModelProtocol {
@@ -32,52 +30,46 @@ final class MainViewModel: MainViewModelProtocol {
         }
     }
     
-    var navigationItemText: String {
-        "Short It!"
-    }
-    
-    var textFieldPlaceholder: String {
-        "https://example.com"
-    }
-    
-    var textLabelData: String {
-        "Enter URL:"
-    }
-    
-    var buttonTitle: String {
-        "Short It!"
-    }
-    
     var viewModelDidChange: ((MainViewModelProtocol) -> ())?
+    
+    private var resultText: String = ResultText.none.rawValue
+    private var userInteractionStatus = false
+    private var apiResponse: Response?
     
     private let textFieldValidationType: String.ValidationType = .url
     
-    private var resultText: String = " "
-    
-    private var userInteractionStatus = false
+    func openWebView(navController: NSObject) {
+        let webViewController = WebViewController()
+        guard let response = self.apiResponse else { return }
+        webViewController.viewModel = WebViewModel(response: response)
+        
+        guard let navVC = navController as? UINavigationController else { return }
+        navVC.pushViewController(webViewController, animated: true)
+    }
     
     func fetchShortUrl(urlString: String?) {
-        
         guard let urlString = urlString else { return }
         
         if urlString.isEmpty {
-            setResultTextAndUserInteractionMode(as: "Empty URL")
+            setResultTextAndUserInteractionMode(as: ResultText.emptyString.rawValue)
             return
         }
         
         if checkValid(urlString) {
-            setResultTextAndUserInteractionMode(as: "...")
+            setResultTextAndUserInteractionMode(as: ResultText.loading.rawValue)
             
             NetworkManager.shared.fetchShortUrl(longUrl: urlString) { [ weak self ] responseModel, error in
                 if error == nil {
                     guard let responseModel = responseModel else { return }
                     StorageManager.shared.saveResponse(response: responseModel)
+                    self?.apiResponse = responseModel
                     self?.setResultTextAndUserInteractionMode(as: responseModel.shorturl, and: true)
                 } else {
                     self?.setResultTextAndUserInteractionMode()
                 }
             }
         }
+        
     }
     
     private func checkValid(_ string: String) ->  Bool {
@@ -86,7 +78,7 @@ final class MainViewModel: MainViewModelProtocol {
             if string.isValid(textFieldValidationType) {
                 return true
             } else {
-                setResultTextAndUserInteractionMode(as: "Url is not valid! Format: http(s)://url.com")
+                setResultTextAndUserInteractionMode(as: ResultText.invalid.rawValue)
                 return false
             }
         }
@@ -96,5 +88,16 @@ final class MainViewModel: MainViewModelProtocol {
         resultText = text
         userInteractionStatus = status
         viewModelDidChange?(self)
+    }
+}
+
+// MARK: -- Result Label static data
+
+extension MainViewModel {
+    private enum ResultText: String {
+        case none = " "
+        case emptyString = "Empty URL"
+        case loading = "..."
+        case invalid = "Url is not valid! Format: http(s)://url.com"
     }
 }

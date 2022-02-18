@@ -7,22 +7,16 @@
 
 import UIKit
 
-protocol TabCoordinator: AnyObject {
-    var rootController: UIViewController { get }
-    var tabBarItem: UITabBarItem { get }
-}
-
 class AppCoordinator {
     
     var tabBarController: UITabBarController
     var tabs: [TabCoordinator] = []
-
-    var window: UIWindow?
     
+    var window: UIWindow?
+        
     init(window: UIWindow?) {
         self.tabBarController = UITabBarController()
         self.window = window
-        
         window?.rootViewController = tabBarController
         
         guard let mainTab = MainTabCoordinator() as TabCoordinator? else { return }
