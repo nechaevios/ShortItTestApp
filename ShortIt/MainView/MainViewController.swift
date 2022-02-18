@@ -89,7 +89,7 @@ final class MainViewController: UIViewController, ChildrenViewCompletionProtocol
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        completion?("Main View Dissappear11")
+        completion?("Main View Dissappear")
     }
     
     @objc private func fetchShortUrl() {

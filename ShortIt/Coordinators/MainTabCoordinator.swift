@@ -14,7 +14,7 @@ class MainTabCoordinator: TabCoordinator {
     
     var mainVC: MainViewController
     lazy var completionHandler = mainVC.completion
-        
+            
     init() {
         mainVC = MainViewController()
         mainVC.viewModel = MainViewModel()

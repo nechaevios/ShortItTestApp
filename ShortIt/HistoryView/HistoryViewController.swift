@@ -26,9 +26,7 @@ final class HistoryViewController: UIViewController, ChildrenViewCompletionProto
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
-    
-    private var responses: [BitLyResponse] = []
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,13 +39,14 @@ final class HistoryViewController: UIViewController, ChildrenViewCompletionProto
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        responses = StorageManager.shared.fetchUrlList()
-        tableView.reloadData()
+        viewModel.fetchResponses {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        completion?("History View Dissappear22")
+        completion?("History View Dissappear")
     }
     
     private func setupViews() {
@@ -81,19 +80,19 @@ final class HistoryViewController: UIViewController, ChildrenViewCompletionProto
 
 extension HistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        responses.count
+        viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let response = responses[indexPath.row]
+        let response = viewModel.responses[indexPath.row]
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
             content.text = response.long_url
             content.secondaryText = response.link
             cell.contentConfiguration = content
         } else {
-            cell.textLabel!.text = response.link
+            cell.textLabel?.text = response.link
         }
         
         return cell
@@ -101,9 +100,9 @@ extension HistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            StorageManager.shared.deleteResponse(at: indexPath.row)
-            responses.remove(at: indexPath.row)
-            tableView.reloadData()
+            viewModel.deleteResponse(at: indexPath.row) {
+                tableView.reloadData()
+            }            
         }
     }
     
@@ -113,7 +112,7 @@ extension HistoryViewController: UITableViewDataSource {
 
 extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlString = responses[indexPath.row].link
+        let urlString = viewModel.responses[indexPath.row].link
         
         if let url = URL(string: urlString) {
             let safariVC = SFSafariViewController(url: url)

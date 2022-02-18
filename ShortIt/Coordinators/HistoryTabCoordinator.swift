@@ -8,12 +8,13 @@
 import UIKit
 
 class HistoryTabCoordinator: TabCoordinator {
+    
     var rootController: UIViewController
     var tabBarItem: UITabBarItem = UITabBarItem(title: "History", image: UIImage(named: "list.bullet"), tag: 2)
     
     var historyVC: HistoryViewController
     lazy var completionHandler = historyVC.completion
-    
+        
     init() {
         historyVC = HistoryViewController()
         historyVC.viewModel = HistoryViewModel()
