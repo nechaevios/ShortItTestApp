@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class StorageManager {
+class StorageManager {
     
     static let shared = StorageManager()
     
@@ -19,7 +19,7 @@ final class StorageManager {
         archiveURL = documentDirectory.appendingPathComponent("UrlList").appendingPathExtension("plist")
     }
     
-    func saveResponse(response: Response) {
+    func saveResponse(response: BitLyResponse) {
         var responses = fetchUrlList()
         responses.append(response)
         guard let data = try? PropertyListEncoder().encode(responses) else { return }
@@ -33,9 +33,9 @@ final class StorageManager {
         try? data.write(to: archiveURL, options: .noFileProtection)
     }
     
-    func fetchUrlList() -> [Response] {
+    func fetchUrlList() -> [BitLyResponse] {
         guard let data = try? Data(contentsOf: archiveURL) else { return [] }
-        guard let responses = try? PropertyListDecoder().decode([Response].self, from: data) else { return [] }
+        guard let responses = try? PropertyListDecoder().decode([BitLyResponse].self, from: data) else { return [] }
         return responses
     }
     
