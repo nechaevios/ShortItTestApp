@@ -3,8 +3,7 @@
 ## iOS Swift MVC (+MVVM)
 
 ### Demo
-![Short It Demo](gif/shortitdemo.gif)
-<img src="gif/shortitdemo.gif" style="width: 250px;" />
+<img src="gif/shortitdemo.gif" style="width: 300px;" />
 
 ### Requirements:
 1. Use ​http://tiny-url.info/open_api.html​
