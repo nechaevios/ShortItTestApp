@@ -1,12 +1,10 @@
 # ShortIt Test App
 
-## iOS Swift MVC (+MVVM)
-
 ### Demo
 <img src="gif/demo.gif" style="width: 300px;" />
 
 ### Requirements:
-1. Use ​http://tiny-url.info/open_api.html​
+1. Use ​http://tiny-url.info/open_api.html​ (replaced with bit.ly)
 2. App should consists of two views accessible via tab bar
 3. First view should allow to create a short version of url from text field
 a. generated short link should be clickable and should open in WebViewController
